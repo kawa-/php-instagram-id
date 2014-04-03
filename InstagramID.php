@@ -1,7 +1,7 @@
 <?php
 
 define('INSTAGRAM_ID_EPOCH', 1283758447); // change this to the latest Unix time.
-define('INSTAGRAM_ID_MACHINE_ID', 1);
+define('INSTAGRAM_ID_MACHINE_ID', 1); // change this as each machines.
 define('INSTAGRAM_ID_SEQ', 'seq');
 
 class InstagramID {
@@ -29,13 +29,12 @@ class InstagramID {
 	/**
 	 * get Unix time from Instagram ID
 	 *
-	 * @param InstagramID $insta_id
+	 * @param type $insta_id 64bit Integer
 	 * @return type Integer
 	 */
-	static function getUnixtime(InstagramID $insta_id) {
-		return (int) ($insta_id->id / 8388608000) + INSTAGRAM_ID_EPOCH;
+	static function getUnixtime($insta_id) {
+		return (int) ((int) $insta_id / 8388608000) + INSTAGRAM_ID_EPOCH;
 	}
 
 }
-
 
