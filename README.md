@@ -2,9 +2,9 @@
 
 ## About
 
-Generates Instagram ID by PHP.
+Generates Instagram Shard ID by PHP.
 
-ID Example: 945668765721297920
+ID Example : 1043515370016179697
 
 ## Reference
 
@@ -14,6 +14,7 @@ ID Example: 945668765721297920
 
 - PHP (>= 5.3)
 - APC or [APCu](https://github.com/krakjoe/apcu)
+- [GMP](http://www.php.net/manual/en/gmp.installation.php)
 
 ## Usage
 
@@ -25,17 +26,24 @@ ID Example: 945668765721297920
 require dirname(__FILE__) . '/InstagramID.php';
 
 $instagram_id = new InstagramID();
-echo 'Instagram ID    : ' . $instagram_id->getID() . "\n";
-echo 'Unix time       : ' . InstagramID::getUnixtime($instagram_id->id) . "\n";
-echo 'time() function : ' . time() . "\n";
-
+echo 'Instagram ID (Int)     : ' . $instagram_id->getID() . "\n";
+echo 'Instagram ID (String)  : ' . $instagram_id->getIDByString() . "\n";
+echo 'Unix time (from Int)   : ' . InstagramID::getUnixtime($instagram_id->id) . "\n";
+echo 'Unix time (from String): ' . InstagramID::getUnixtimeFromString($instagram_id->getIDByString()) . "\n";
+echo 'time() function        : ' . time() . "\n";
 ~~~
 
 ##### Output (Run example.php in this dir)
 
 ~~~
-$ php example.php 
-Instagram ID    : 945682658757706752
-Unix time       : 1396492604
-time() function : 1396492604
+Instagram ID (Int)     : 93357028499522560
+Instagram ID (String)  : 6tZiq3fl9k
+Unix time (from Int)   : 1398155125
+Unix time (from String): 1398155125
+time() function        : 1398155125
 ~~~
+
+## Misc
+
+Is it a genuine Instagram Shard ID generation?
+Not sure, but check.php in this repo can support for this algo.
